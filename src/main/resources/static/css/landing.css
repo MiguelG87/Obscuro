@@ -23,8 +23,6 @@ html {
         text-align: start;
     }
 }
-
-
 @media (min-width: 369px) and (max-width: 560px) {
     .homeMenu {
         justify-content: center;
@@ -47,7 +45,6 @@ html {
         text-align: start;
     }
 }
-
 @media (min-width: 561px)and (max-width: 768px) {
     .homeMenu {
         justify-content: center;
@@ -70,7 +67,6 @@ html {
         text-align: start;
     }
 }
-
 @media (min-width: 769px)and (max-width: 950px) {
     .homeMenu {
         justify-content: center;
@@ -93,7 +89,6 @@ html {
         text-align: start;
     }
 }
-
 @media (min-width: 951px) and (max-width: 1300px) {
     .homeMenu {
         justify-content: center;
@@ -116,8 +111,6 @@ html {
         text-align: start;
     }
 }
-
-
 @media (min-width: 1301px) {
     .homeMenu {
         justify-content: center;

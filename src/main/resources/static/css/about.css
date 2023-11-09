@@ -1,9 +1,7 @@
 html {
     overflow: hidden;
 }
-
 @media (min-width: 1px) and (max-width: 368px) {
-    
     h2 {
         margin-left: 1.5vw;
         margin-right: 1.5vw;
@@ -11,7 +9,6 @@ html {
     }
 }
 @media (min-width: 369px) and (max-width: 560px) {
-    
     h2 {
         margin-left: 0;
         margin-right: 1.5vw;
@@ -32,7 +29,6 @@ html {
         font-size: 4vh;
     }
 }
-
 @media (min-width: 951px) and (max-width: 1300px) {
     h2 {
         margin-left: 0;

@@ -81,10 +81,59 @@
     }
 }
 @media (min-width: 769px) and (max-width: 950px) {
-    
+    h2 {
+        font-size: 3vh;
+    }
+    small {
+        font-size: 1.5vh;
+    }
+    label {
+        font-size: 2vh;
+    }
+    input {
+        width: 30%;
+        padding: .50% .25%;
+        font-size: 2vh;
+        margin-top: .55%;
+    }
+    #name, #nameForm, #username, #usernameForm, #password, #passwordForm, #passwordConfirm, #passwordConfirmForm  {
+        width: 30vw;
+        font-size: 2vh;
+    }
+    .homeMenu {
+        margin-bottom: 0;
+        margin-right: 20vw;
+    }
+    #errorPassword {
+        font-size: 1vh;
+    }
 }
 @media (min-width: 951px) and (max-width: 1300px) {
-    
+    h2 {
+        font-size: 4vh;
+    }
+    small {
+        font-size: 2vh;
+    }
+    label {
+        font-size: 2vh;
+    }
+    input {
+        width: 20.75%;
+        padding: .50% .25%;
+        font-size: 2vh;
+        margin-top: .55%;
+    }
+    #name, #nameForm, #username, #usernameForm, #password, #passwordForm, #passwordConfirm, #passwordConfirmForm  {
+        width: 20%;
+        font-size: 2vh;
+    }
+    .homeMenu {
+        margin-bottom: 0;
+    }
+    #errorPassword {
+        font-size: 1vh;
+    }
 }
 @media (min-width: 1301px) {
     h2 {

@@ -1,7 +1,6 @@
 * {
     color: red;
 }
-
 html {
     background-image: url("/img/scary.jpg");
     background-size: cover;
@@ -11,15 +10,12 @@ html {
     width: 100vw;
     overflow: hidden;
 }
-
 #newHigh {
     margin-left: 0;
 }
-
 #leaderboard {
     margin-bottom: 0;
 }
-
 ol {
     padding-left: 25px;
 }

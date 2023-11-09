@@ -46,7 +46,7 @@ public class GameController {
         model.addAttribute("gamesettings", gameSettings);
         return "loadSweetDreams";
     }
-
+    
     @GetMapping("/sweetdreams")
     public String sweetDreams(Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

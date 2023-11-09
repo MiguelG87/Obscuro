@@ -103,7 +103,6 @@ public class SettingController {
     return "settings/settingsProfile";
 }
 
-
     @PostMapping("/settings/{id}/profile")
     public String submitSettingsProfile(@PathVariable long id, @ModelAttribute User editProfile, Model model) throws AccessDeniedException {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -126,7 +125,6 @@ public class SettingController {
         Optional<Integer> userPositionInSweetDreams = userService.getUserPlacement(user);
         Optional<Integer> userPositionInNightmare = userService.getUserPlacementNightmare(user);
         Optional<Integer> userPositionInSleepParalysis = userService.getUserPlacementSleepParalysis(user);
-        
         int userPosition = userPositionInSweetDreams.orElse(0);
         int userPositionNightmare = userPositionInNightmare.orElse(0);
         int userPositionSleepParlysis = userPositionInSleepParalysis.orElse(0);
@@ -138,14 +136,12 @@ public class SettingController {
         model.addAttribute("userPositionInSweetDreams", userPosition);
         model.addAttribute("userPositionInNightmare", userPositionNightmare);
         model.addAttribute("userPositionInSleepParalysis", userPositionSleepParlysis);
-
         return "settings/loadSuccess";
     }
 
     @GetMapping("/settings/{id}/account")
     public String settingsAccount(@PathVariable long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         if(userDao.findById(id).isPresent()){
             model.addAttribute("user", user);
             GameSettings gameSettings = gameSettingsDao.findByUser(user);
@@ -153,7 +149,6 @@ public class SettingController {
         }
         return "settings/settingsAccount";
     }
-
 
     @PostMapping("/settings/{id}/account/password")
     public String submitSettingsAccount (Model model, @ModelAttribute User user, @PathVariable long id, @RequestParam("password") String password, HttpSession session) throws AccessDeniedException {
@@ -187,16 +182,13 @@ public class SettingController {
         model.addAttribute("gamesettings", gameSettings);
         userDao.save(loggedInUser);
         session.invalidate();
-
         return "settings/loadPassword";
     }
-
 
     @PostMapping("/settings/{id}/delete")
     public String submitDelete (HttpSession session, @PathVariable long id) throws AccessDeniedException {
         User loggedInUser = userDao.findById(id).get();
         User authorizedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         if(loggedInUser.getId() != authorizedUser.getId()){
             throw new AccessDeniedException("You cannot delete other user's account");
         }

@@ -25,9 +25,9 @@ public class Nightmare {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    // Define the ManyToOne relationship with the User entity
+    
     @ManyToOne
-    @JoinColumn(name = "user_id")  // Specify the foreign key column name
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(columnDefinition = "INT DEFAULT 0")

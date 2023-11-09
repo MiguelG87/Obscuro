@@ -12,28 +12,23 @@
       opacity: 0; /* End with images completely transparent */
     }
 }
-
 video {
     background-color: transparent;
     animation: fadeIn 6s linear infinite; /* Adjust animation duration as needed */
     overflow: hidden;
 
 }
-
 img {
     position: absolute;
     background-color: transparent;
     animation: fadeIn 6s linear infinite; /* Adjust the animation duration as needed */
 }
-
-
 html {
     background-color: transparent;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
 }
-
 #nightmareBG {
   object-fit: fill;
   width: 100%;
@@ -44,7 +39,6 @@ html {
   z-index: -1;
   overflow: hidden;
 }
-
 @keyframes fadeInColor {
   0% {
     color: black; /* Start with images completely transparent */
@@ -59,13 +53,11 @@ html {
     color: black; /* End with images completely transparent */
   }
 }
-
 #title, #version, #company {
   background-color: transparent;
   animation: fadeInColor 6s linear infinite; /* Adjust animation duration as needed */
 
 }
-
 @media (min-width: 1px) and (max-width: 368px) {
   img {
       position: absolute;

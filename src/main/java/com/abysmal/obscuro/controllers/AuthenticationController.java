@@ -22,7 +22,7 @@ public class AuthenticationController {
     public String login() {
         return "login";
     }
-
+    
     @GetMapping("/load/login")
     public String loadLogin(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

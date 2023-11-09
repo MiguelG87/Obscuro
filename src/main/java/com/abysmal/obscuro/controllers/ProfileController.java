@@ -54,50 +54,40 @@ public class ProfileController {
     @PostMapping("/register")
 public String submitRegistrationForm(@ModelAttribute User user, Model model) {
     String password = user.getPassword();
-    
-    // Check if the password is empty or null
     if (password == null || password.trim().isEmpty()) {
         model.addAttribute("user", new User());
         model.addAttribute("passwordError", "Password cannot be empty.");
         return "register";
     }
-
     if (userDao.isUsernameTaken(user.getUsername())) {
         model.addAttribute("user", new User());
         model.addAttribute("usernameError", "Username is already taken");
         return "register";
     }
-    
     String patternPW = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,16}$";
     Pattern pattern = Pattern.compile(patternPW);
     Matcher matcher = pattern.matcher(password);
-    
     if (!matcher.matches()) {
         model.addAttribute("user", new User());
         model.addAttribute("passwordError", "Your password is not between 8-16 characters or does not meet the criteria.");
         return "register";
     }
-    
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     String imageUrl = "/img/image.png";
     user.setProfilePicture(imageUrl);
     userDao.save(user);
-
     SweetDreams sweetDreams = new SweetDreams();
     sweetDreams.setUser(user);
     sweetDreams.setLevel("0");
     sweetDreamsDao.save(sweetDreams);
-
     Nightmare nightmare = new Nightmare();
     nightmare.setUser(user);
     nightmare.setLevel("0");
     nightmareDao.save(nightmare);
-
     SleepParalysis sleepParalysis = new SleepParalysis();
     sleepParalysis.setUser(user);
     sleepParalysis.setLevel("0");
     sleepParalysisDao.save(sleepParalysis);
-
     GameSettings gameSettings = new GameSettings();
     gameSettings.setUser(user);
     gameSettings.setBrightness(01.00);
@@ -105,7 +95,6 @@ public String submitRegistrationForm(@ModelAttribute User user, Model model) {
     gameSettings.setHomeMusic(00.02);
     gameSettings.setSoundFX(00.10);
     gameSettingsDao.save(gameSettings);
-
     return "loadRegister";
 }
 
@@ -117,7 +106,6 @@ public String profile(Model model) {
     Nightmare nightmare = nightmareDao.findByUser(user);
     SleepParalysis sleepParalysis = sleepParalysisDao.findByUser(user);
     GameSettings gameSettings = gameSettingsDao.findByUser(user);
-
     // Get the user's position in the sweetDreamsTop list
     Optional<Integer> userPositionInSweetDreams = userService.getUserPlacement(user);
     Optional<Integer> userPositionInNightmare = userService.getUserPlacementNightmare(user);
@@ -126,21 +114,17 @@ public String profile(Model model) {
     int userPosition = userPositionInSweetDreams.orElse(0);
     int userPositionNightmare = userPositionInNightmare.orElse(0);
     int userPositionSleepParlysis = userPositionInSleepParalysis.orElse(0);
-
     model.addAttribute("gamesettings", gameSettings);
     model.addAttribute("user", user);
     model.addAttribute("sweetdreams", sweetDreams);
     model.addAttribute("nightmare", nightmare);
     model.addAttribute("sleepparalysis", sleepParalysis);
-
     // Add the user's position in sweetDreamsTop to the model
     model.addAttribute("userPositionInSweetDreams", userPosition);
     model.addAttribute("userPositionInNightmare", userPositionNightmare);
     model.addAttribute("userPositionInSleepParalysis", userPositionSleepParlysis);
-
     return "profile";
 }
-
 
     @GetMapping("/profile/{id}")
     public String profileUser(@PathVariable long id, Model model) {
@@ -149,28 +133,20 @@ public String profile(Model model) {
         Nightmare nightmare = nightmareDao.findByUser(user);
         SleepParalysis sleepParalysis = sleepParalysisDao.findByUser(user);
         GameSettings gameSettings = gameSettingsDao.findByUser(user);
-
-        // Get the user's position in the sweetDreamsTop list
         Optional<Integer> userPositionInSweetDreams = userService.getUserPlacement(user);
         Optional<Integer> userPositionInNightmare = userService.getUserPlacementNightmare(user);
         Optional<Integer> userPositionInSleepParalysis = userService.getUserPlacementSleepParalysis(user);
-        // If the user is not in the top 3, default position to 0
         int userPosition = userPositionInSweetDreams.orElse(0);
         int userPositionNightmare = userPositionInNightmare.orElse(0);
         int userPositionSleepParlysis = userPositionInSleepParalysis.orElse(0);
-
         model.addAttribute("gamesettings", gameSettings);
         model.addAttribute("user", user);
         model.addAttribute("sweetdreams", sweetDreams);
         model.addAttribute("nightmare", nightmare);
         model.addAttribute("sleepparalysis", sleepParalysis);
-
-        // Add the user's position in sweetDreamsTop to the model
         model.addAttribute("userPositionInSweetDreams", userPosition);
         model.addAttribute("userPositionInNightmare", userPositionNightmare);
         model.addAttribute("userPositionInSleepParalysis", userPositionSleepParlysis);
         return "profile";
     }
-
-    
 }

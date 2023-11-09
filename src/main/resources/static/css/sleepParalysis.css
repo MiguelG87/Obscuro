@@ -8,7 +8,6 @@
     z-index: -1;
     
 }
-
 #sleepParalysisBG {
     object-fit: cover;
     width: 100%;
@@ -19,7 +18,6 @@
     z-index: -1;
     
 }
-
 * {
     background-color: transparent;
 }

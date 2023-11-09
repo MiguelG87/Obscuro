@@ -1,6 +1,5 @@
 package com.abysmal.obscuro.services;
 
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,13 +49,10 @@ public class UserService {
 
     public Optional<Integer> getUserPlacementSleepParalysis(User user) {
         List<SleepParalysis> topSleepParalysis = sleepParalysisRepository.findTop3ByOrderByLevelDesc();
-        // Extract user IDs from the SweetDreams entities
         List<Long> topUserIds = topSleepParalysis.stream()
                 .map(sleepParalysis -> sleepParalysis.getUser().getId())
                 .collect(Collectors.toList());
-        // Find the index of the user in the topUserIds list
-        int placement = topUserIds.indexOf(user.getId()); // user.getId() is a Long
-        // If the user is not in the top 3, return Optional.empty()
+        int placement = topUserIds.indexOf(user.getId());
         return placement != -1 ? Optional.of(placement + 1) : Optional.empty();
     }
 }

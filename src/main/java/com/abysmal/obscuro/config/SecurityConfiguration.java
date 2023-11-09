@@ -18,30 +18,21 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfiguration {
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
     }
-
-
     // The @Bean annotation means that the class itself is being managed by Spring.
-
     // Is a class that is managed by Spring, specifically to hash and unhash our User passwords
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
     // This class is used to manage the users Authentication status.
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-
     // This class will provide filters for our Spring security for different URL mappings.
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                        /* Pages that require authentication
-                         * only authenticated users can edit and delete profiles! */
-
-
                         .requestMatchers(
                                 "/profile",
                                 "/home",
@@ -62,10 +53,6 @@ public class SecurityConfiguration {
                                 "/load/sleepparalysis",
                                 "/nightmare"
                                 ).authenticated()
-
-                        /* Pages that do not require authentication
-                         * anyone can visit the home page, register, login, game settings and view leaderboard */
-
 
                         .requestMatchers("/",
                         "/profile/{id}",
