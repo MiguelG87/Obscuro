@@ -1,0 +1,90 @@
+#sleepParalysisBG {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+}
+
+#sleepParalysisBG {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+}
+
+* {
+    background-color: transparent;
+}
+
+@media (min-width: 1px) and (max-width: 368px) {
+    img {
+        position: absolute;
+        background-color: transparent;
+        height: 50px;
+        width: 50px;
+    }
+}
+@media (min-width: 369px) and (max-width: 560px) {
+img {
+    position: absolute;
+    background-color: transparent;
+    height: 60px;
+    width: 60px;
+}
+}
+@media (min-width: 561px) and (max-width: 769px) {
+img {
+    position: absolute;
+    background-color: transparent;
+    height: 70px;
+    width: 70px;
+}
+}
+@media (min-width: 769px) and (max-width: 950px) {
+img {
+    position: absolute;
+    background-color: transparent;
+    height: 80px;
+    width: 80px;
+}
+}
+@media (min-width: 951px) and (max-width: 1300px) {
+img {
+    position: absolute;
+    background-color: transparent;
+    height: 90px;
+    width: 90px;
+}
+}
+@media (min-width: 1301px) {
+img {
+        position: absolute;
+        background-color: transparent;
+    }
+}
+.sides {
+position: absolute;
+width: 50%;
+height: 61%;
+}
+#rightSideContainer {
+padding: 2vh;
+}
+#rightSide {
+left: 50%;
+border-left: 1px solid;
+}
+.homeMenu {
+margin: 0;
+}
+#leaderboardContainer {
+margin-left: 10%;
+}

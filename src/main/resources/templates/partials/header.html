@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true">
+<head>
+    <meta charset="UTF-8">
+    <title>Obscuro</title>
+</head>
+<header th:fragment="header">
+    <div class="icons">
+        <ul class="icon">
+            <a href="#"><i class="fa fa-fw fa-arrow-left icon back-icon" id="back"></i></a>
+            <a href="/load/main"><i class="fa fa-fw fa-arrow-left icon back-menu-icon"></i></a>
+            <a href="/settings"><i class="fa fa-fw fa-arrow-left icon back-settings-icon"></i></a>
+            <div id="gameTimerContainer"></div>
+        </ul>
+    </div>
+    <div class="title">
+        <h1 id="title">Obscuro</h1>
+    </div>
+    <div class="icons">
+        <ul class="icon">
+            <a sec:authorize="!isAuthenticated()" href="/"><i class="fa fa-fw fa-home icon home-icon"></i></a>
+            <a sec:authorize="isAuthenticated()" href="/home"><i class="fa fa-fw fa-home icon home-icon"></i></a>
+            <a href="/sweetdreams"><i class="fa fa-fw fa-rotate-right icon back-sweetdreams-icon"></i></a>
+            <a href="/nightmare"><i class="fa fa-fw fa-rotate-right icon back-nightmare-icon"></i></a>
+            <a href="/sleepparalysis"><i class="fa fa-fw fa-rotate-right icon back-sleepparalysis-icon"></i></a>
+            <a href="#"><i class="fa fa-fw fa-rotate-right icon refresh-icon" id="refresh"></i></a>
+            <a sec:authorize="isAuthenticated()" href="/profile"><i class="fa fa-fw fa-user icon profile-icon"></i></a>
+            <a sec:authorize="isAuthenticated()" href="/leaderboard"><i class="fa fa-fw fa-globe icon leaderboard-icon"></i></a>
+            <a sec:authorize="!isAuthenticated()" href="/about"><i class="fa fa-fw fa-info icon about-icon"></i></a>
+            <a sec:authorize="isAuthenticated()" href="/settings"><i class="fa fa-fw fa-gear icon settings-icon"></i></a>
+            
+        </ul>
+    </div>
+    <script>
+        document.getElementById('back').addEventListener('click', function (event) {
+            event.preventDefault();
+            window.history.back();
+        });
+        document.getElementById('refresh').addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.reload();
+        });
+    </script>
+</header>
+
+</html>

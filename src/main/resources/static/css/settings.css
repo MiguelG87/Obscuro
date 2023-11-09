@@ -1,0 +1,66 @@
+@media (min-width: 1px) and (max-width: 368px) {
+    a {
+        width: 16%;
+        padding: 3%;
+        font-size: 3.5vh;
+    }
+    input {
+        width: 10%;
+        text-align: start;
+        padding: 3%;
+        font-size: 3.5vh;
+    }
+}
+@media (min-width: 369px) and (max-width: 560px) {
+    a {
+        width: 16%;
+        padding: 3%;
+        font-size: 3.5vh;
+    }
+    input {
+        width: 10%;
+        text-align: start;
+        padding: 3%;
+        font-size: 3.5vh;
+    }
+}
+@media (min-width: 561px) and (max-width: 769px) {
+    a {
+        width: 16%;
+        padding: 3%;
+        font-size: 3.5vh;
+    }
+    input {
+        width: 10%;
+        text-align: start;
+        padding: 3%;
+        font-size: 3.5vh;
+    }
+}
+@media (min-width: 769px) and (max-width: 950px) {
+    a {
+        width: 16%;
+    }
+    input {
+        width: 10%;
+        text-align: start;
+    }
+}
+@media (min-width: 951px) and (max-width: 1300px) {
+    a {
+        width: 16%;
+    }
+    input {
+        width: 10%;
+        text-align: start;
+    }
+}
+@media (min-width: 1301px) {
+    a {
+        width: 16%;
+    }
+    input {
+        width: 7%;
+        text-align: start;
+    }
+}

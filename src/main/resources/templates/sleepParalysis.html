@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/sleepParalysis.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            overflow: hidden;
+        }
+        img {
+            position: absolute;
+            background-color: transparent;
+        }
+        .sides {
+            position: absolute;
+            width: 45%;
+            height: 61%;
+        }
+        #leftSide {
+            left: 5%;
+        }
+        #rightSide {
+            left: 50%;
+            border-left: 1px solid;
+        }
+        .homeMenu {
+            margin: 0;
+        }
+        #leaderboardContainer {
+            margin-left: 10%;
+        }
+        #refresh {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .home-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+        ul {
+            display: flex;
+        }
+        .back-settings-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="sleepParalysisBG">
+        <source src="/vid/sleepparalysisbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audioGame">
+        <source src="/audio/SleepParalysis.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <div  id="leftSide" class="sides"></div>
+        <div id="rightSide" class="sides"></div>
+    </div>
+    <div id="leaderboardContainer" class="homeMenu" style="display: none;"></div>
+    <span id="sleepParalysisLevel" style="display:none;" th:text="${user.sleepParalysis != null ? user.sleepParalysis : '0'}"></span>
+    <form th:action="@{/sleepparalysis/{id}/level(id=${sleepparalysis.id})}" th:method="post" th:object="${sleepparalysis}">
+        <input type="hidden" name="level" id="sleepParalysislevel" th:field="*{level}">
+        <button type="submit" id="hiddenButton" style="display:none;"></button>
+    </form>
+    <input type="hidden" name="levels" id="levels" th:value="*{sleepparalysis.level}">
+    <input type="text" id="gameMusic" name="gameMusic" th:field="*{gamesettings.gameMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    window.addEventListener('load', function () {
+    startGameTimer();
+    generateFaces();
+});
+    let numberOfFaces = 5;
+    let level = 1;
+    const theLeftSide = document.querySelector("#leftSide");
+    const theRightSide = document.querySelector("#rightSide");
+    const gameTimerContainer = document.getElementById("gameTimerContainer");
+
+    const levelInput = document.getElementById("sleepParalysislevel");
+    const sleepParalysisLevel = parseInt(document.getElementById("levels").value);
+
+    let gameTimer;
+
+    function generateFaces () {
+        for (i = 0; i < numberOfFaces; i++) {
+            face = document.createElement("IMG");
+            face.src = '/img/elon.png';
+            var leftSide = document.getElementById("leftSide");
+            var leftHeight = leftSide.clientHeight
+            var theLeftHeight = leftHeight - 150;
+            let maxWidth = window.innerWidth < 369 ? theLeftHeight / 5 : window.innerWidth < 561 ? theLeftHeight / 4.5 : window.innerWidth < 770 ? theLeftHeight / 4 : window.innerWidth < 951 ? theLeftHeight / 3 : theLeftHeight;
+            let maxHeight = window.innerWidth < 800 ? theLeftHeight / 1.25 : theLeftHeight;
+            randomTop = Math.floor(Math.random() * maxHeight);
+            randomLeft = Math.floor(Math.random()* maxWidth);
+            face.style.top = randomTop + 'px';
+            face.style.left= randomLeft + 'px';
+            theLeftSide.appendChild(face);
+            levelInput.value = level;
+        }
+        const leftSideImages = theLeftSide.cloneNode(true);
+        leftSideImages.removeChild(leftSideImages.lastChild);
+        theRightSide.appendChild(leftSideImages);
+        theLeftSide.lastChild.addEventListener("click", nextLevel);
+        document.body.addEventListener("click", gameOver);
+    }
+
+    
+    function nextLevel(event) {
+            event.stopPropagation();
+            while (theLeftSide.firstChild){
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+            numberOfFaces += 5;
+            level += 1;
+            generateFaces();
+            clearInterval(gameTimer);
+            startGameTimer();
+    }
+    function gameOver() {
+        theLeftSide.lastChild.removeEventListener('click', nextLevel);
+        document.body.removeEventListener("click", gameOver);
+        // document.body.style.backgroundImage = "url(/img/scary.jpg)";
+        if (level > sleepParalysisLevel) {
+            document.getElementById("hiddenButton").click();
+        } else {
+            displayLeaderboard();
+            gameTimerContainer.style.display = "none";
+            }
+        }
+
+        function displayLeaderboard() {
+            const backIcon = document.querySelector(".back-menu-icon");
+            const refreshIcon = document.querySelector(".back-sleepparalysis-icon");
+            const leaderboardContainer = document.getElementById("leaderboardContainer");
+                leaderboardContainer.innerHTML = `
+        <h2>Game Over!</h2>
+        <h2>Level: ${level}</h2>
+        <h2>Highest Level: ${sleepParalysisLevel}</h2>
+    `;
+    leaderboardContainer.style.display = "block";
+    backIcon.style.display = "flex";
+    refreshIcon.style.display = "flex";
+
+    // Hide the homeMenu div
+    const homeMenu = document.querySelector(".homeMenu");
+    homeMenu.style.display = "none";
+}
+
+function startGameTimer() {
+        let secondsLeft = 15; // Start the timer from 15 seconds
+        updateGameTimer(secondsLeft);
+        gameTimerContainer.style.display = "inline";
+        gameTimer = setInterval(function () {
+            secondsLeft--;
+            updateGameTimer(secondsLeft);
+            if (secondsLeft <= 10) {
+                gameTimerContainer.style.display = "none";
+            }
+
+            if (secondsLeft <= 0) {
+                clearInterval(gameTimer);
+                gameOver();
+            }
+        }, 1000); // Update the timer every 1 second
+    }
+
+    function updateGameTimer(secondsLeft) {
+        gameTimerContainer.innerHTML = `${secondsLeft}`;
+    }
+    
+    var audioGame = document.getElementById("audioGame");
+    var userAudioGame = document.getElementById("gameMusic").value;
+    audioGame.volume = userAudioGame;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

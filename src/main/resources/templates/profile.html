@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/profile.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .back-settings-icon {
+            display: none;
+        }
+        html {
+            overflow: hidden;
+        }
+        #back {
+            display: none;
+        }
+        #refresh {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="standardBG">
+        <source src="/vid/standardbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audio">
+        <source src="/audio/standard.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <div class="profileCard">
+            <div class="profile">
+                <img class="profilePicture" id="profilePicture" th:src="@{${user.getProfilePicture()}}"/>
+            </div>
+            <div class="topStats">
+                <span>Sweet Dreams - <span th:text="${sweetdreams.level}"></span></span><br>
+                <span>Nightmare - <span th:text="${nightmare.level}"></span></span><br>
+                <span>Sleep Paralysis - <span th:text="${sleepparalysis.level}"></span></span>
+            </div>
+            <div class="names">
+                <span class="name" th:text="${user.name}"></span><br><br>
+                <span class="username" th:text="${user.username}"></span>
+            </div>
+            <div class="badges">
+
+                <div id="sweetDreamsBadgeContainer">
+                    <th:block th:if="${userPositionInSweetDreams > 0}">
+                        <div th:switch="${userPositionInSweetDreams}">
+                            <div th:case="1">
+                                <img th:src="@{/img/firstplacebadge.png}" alt="First Place Sweet Dreams Badge" class="badge">
+                            </div>
+                            <div th:case="2">
+                                <img th:src="@{/img/secondplacebadge.png}" alt="Second Place Sweet Dreams Badge" class="badge">
+                            </div>
+                            <div th:case="3">
+                                <img th:src="@{/img/thirdplacebadge.png}" alt="Third Place Sweet Dreams Badge" class="badge">
+                            </div>
+                        </div>
+                    </th:block>
+                    <th:block th:unless="${userPositionInSweetDreams != 0}">
+                        <img th:src="@{/img/sweetdreamsplaceholderbadge.png}" alt="Placeholder Sweet Dreams Badge" class="badge">
+                    </th:block>
+                </div>
+
+                <div id="nightmareBadgeContainer">
+                    <th:block th:if="${userPositionInNightmare > 0}">
+                        <div th:switch="${userPositionInNightmare}">
+                            <div th:case="1">
+                                <img th:src="@{/img/firstplacebadge.png}" alt="First Place Nightmare Badge" class="badge">
+                            </div>
+                            <div th:case="2">
+                                <img th:src="@{/img/secondplacebadge.png}" alt="Second Place Nightmare Badge" class="badge">
+                            </div>
+                            <div th:case="3">
+                                <img th:src="@{/img/thirdplacebadge.png}" alt="Third Place Nightmare Badge" class="badge">
+                            </div>
+                        </div>
+                    </th:block>
+                    <th:block th:unless="${userPositionInNightmare != 0}">
+                        <img th:src="@{/img/nightmareplaceholderbadge.png}" alt="Placeholder Nightmare Badge" class="badge">
+                    </th:block>
+                </div>
+
+                <div id="sleepParalysisBadgeContainer">
+                    <th:block th:if="${userPositionInSleepParalysis > 0}">
+                        <div th:switch="${userPositionInSleepParalysis}">
+                            <div th:case="1">
+                                <img th:src="@{/img/firstplacebadge.png}" alt="First Place Sleep Paralysis Badge" class="badge">
+                            </div>
+                            <div th:case="2">
+                                <img th:src="@{/img/secondplacebadge.png}" alt="Second Place Sleep Paralysis Badge" class="badge">
+                            </div>
+                            <div th:case="3">
+                                <img th:src="@{/img/thirdplacebadge.png}" alt="Third Place Sleep Paralysis Badge" class="badge">
+                            </div>
+                        </div>
+                    </th:block>
+                    <th:block th:unless="${userPositionInSleepParalysis != 0}">
+                        <img th:src="@{/img/sleepparalysisplaceholderbadge.png}" alt="Placeholder Sleep Paralysis Badge" class="badge">
+                    </th:block>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+    <input type="text" id="homeMusic" name="homeMusic" th:field="*{gamesettings.homeMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audio = document.getElementById("audio");
+    var userAudio = document.getElementById("homeMusic").value;
+    audio.volume = userAudio;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

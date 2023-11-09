@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nightmareLost.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .back-settings-icon {
+            display: none;
+        }
+        h2 {
+            margin-left: 5vw;
+        }
+        #leaderboardContainer {
+            margin-left: 10%;
+        }
+        #refresh {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .home-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="nightmareBG">
+        <source src="/vid/nightmarebg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audioGame">
+        <source src="/audio/Nightmare.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <h2 id="newHigh">New High Score !</h2>
+        <h3 id="level">New Highest Level : <span class="fade" th:text="${nightmare.level != '0' ? nightmare.level : '1'}"></span></h3>
+        <h4 id="leaderboard">Leaderboard :</h4>
+        <ol>
+            <th:block th:each="nightmaretop: ${nightmaretop}">
+                <li class="fade">
+                    <span class="fade" th:text="${nightmaretop.user.username}"></span> - Level: <span class="fade" th:text="${nightmare.level != '0' ? nightmare.level : '1'}"></span>
+                </li>
+            </th:block>
+        </ol>
+    </div>
+    <input type="text" id="gameMusic" name="gameMusic" th:field="*{gamesettings.gameMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audioGame = document.getElementById("audioGame");
+    var userAudioGame = document.getElementById("gameMusic").value;
+    audioGame.volume = userAudioGame;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

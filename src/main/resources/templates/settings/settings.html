@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            overflow: hidden;
+        }
+        .back-settings-icon {
+            display: none;
+        }
+        #refresh {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="standardBG">
+        <source src="/vid/standardbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audio">
+        <source src="/audio/standard.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <a href="#"><i class="fa fa-fw fa-caret-left" id="back"></i></a>
+        <h2>Settings</h2>
+        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id==user.id}" th:href="@{/settings/{id}/game(id=${user.id})}"><span>Game Settings</span></a>
+        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id==user.id}" th:href="@{/settings/{id}/profile(id=${user.id})}"><span>Profile Settings</span></a>
+        <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id==user.id}" th:href="@{/settings/{id}/account(id=${user.id})}"><span>Account Settings</span></a>
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout" class="logout"/>
+            </form>
+        </div>
+    </div>
+    <input type="text" id="homeMusic" name="homeMusic" th:field="*{gamesettings.homeMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audio = document.getElementById("audio");
+    var userAudio = document.getElementById("homeMusic").value;
+    audio.volume = userAudio;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

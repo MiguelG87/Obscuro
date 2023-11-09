@@ -1,0 +1,66 @@
+@media (min-width: 1px) and (max-width: 368px) {
+    #sweetDreamsBtn {
+        width: 20%;
+    }
+    #nightmareBtn {
+        width: 20%;
+    }
+    #sleepParalysisBtn {
+        width: 20%;
+    }
+}
+@media (min-width: 369px) and (max-width: 560px) {
+    #sweetDreamsBtn {
+        width: 20%;
+    }
+    #nightmareBtn {
+        width: 20%;
+    }
+    #sleepParalysisBtn {
+        width: 20%;
+    }
+}
+@media (min-width: 561px) and (max-width: 769px) {
+    #sweetDreamsBtn {
+        width: 20%;
+    }
+    #nightmareBtn {
+        width: 20%;
+    }
+    #sleepParalysisBtn {
+        width: 20%;
+    }
+}
+@media (min-width: 769px) and (max-width: 950px) {
+    #sweetDreamsBtn {
+        width: 20%;
+    }
+    #nightmareBtn {
+        width: 20%;
+    }
+    #sleepParalysisBtn {
+        width: 20%;
+    }
+}
+@media (min-width: 951px) and (max-width: 1300px) {
+    #sweetDreamsBtn {
+        width: 12.5%;
+    }
+    #nightmareBtn {
+        width: 10%;
+    }
+    #sleepParalysisBtn {
+        width: 13.5%;
+    }
+}
+@media (min-width: 1301px) {
+    #sweetDreamsBtn {
+        width: 12.5%;
+    }
+    #nightmareBtn {
+        width: 10%;
+    }
+    #sleepParalysisBtn {
+        width: 13.5%;
+    }
+}

@@ -1,0 +1,25 @@
+* {
+    color: red;
+}
+
+html {
+    background-image: url("/img/scary.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#newHigh {
+    margin-left: 0;
+}
+
+#leaderboard {
+    margin-bottom: 0;
+}
+
+ol {
+    padding-left: 25px;
+}

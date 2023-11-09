@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/landing.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .back-settings-icon {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        #refresh {
+            display: none;
+        }
+        .home-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+    </style>
+</head>
+<body class="container">
+    <header th:replace="~{partials/header :: header}"></header>
+    <div class="homeMenu">
+        <video playsinline autoplay muted loop id="standardBG">
+            <source src="/vid/standardbg.mp4" type="video/mp4">
+        </video>
+        <audio controls autoplay loop style="display: none;" id="audio">
+            <source src="/audio/standard.mp3" type="audio/mpeg">
+        </audio>
+        <a id="loginBtn" sec:authorize="!isAuthenticated()" href="/login">Login</a>
+        <a id="registerBtn" sec:authorize="!isAuthenticated()" href="/register">Create Account</a>
+        <a id="mainMenuBtn" sec:authorize="isAuthenticated()" href="/main">Main Menu</a>
+    </div>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audio = document.getElementById("audio");
+    audio.volume = .03;
+</script>
+</html>

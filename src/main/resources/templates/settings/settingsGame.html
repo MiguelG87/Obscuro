@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/settingsGame.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            overflow: hidden;
+        }
+        .home-icon {
+            display: none;
+        }
+        .refresh-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .back-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="standardBG">
+        <source src="/vid/standardbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audio">
+        <source src="/audio/standard.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls autoplay loop style="display: none;" id="audioGame">
+        <source src="/audio/SleepParalysis.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls autoplay loop style="display: none;" id="audioFX">
+        <source src="/audio/StaticSound.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <form th:action="@{/settings/{id}/game(id= ${user.id})}" th:method="post" th:object="${gamesettings}">
+            <p>Display settings:</p>
+            <div>
+                <label for="brightness">Brightness</label>
+                <input type="range" id="brightness" name="brightness" min=".09" max="2.5" step="any" th:field="*{brightness}"/>
+            </div><br>
+            <p>Audio settings:</p>
+            <div>
+                <label for="homeMusic">Home Music</label>
+                <input type="range" id="homeMusic" name="homeMusic" min="0" max=".1" step="any" th:field="*{homeMusic}"/>
+            </div>
+            <div>
+                <label for="gameMusic">Game Music</label>
+                <input type="range" id="gameMusic" name="gameMusic" min="0" max=".5" step="any" th:field="*{gameMusic}"/>
+            </div>
+            <div>
+                <label for="soundFX">Sound FX</label>
+                <input type="range" id="soundFX" name="soundFX" min="0" max=".5" step="any" th:field="*{soundFX}"/>
+            </div><br>
+            <div>
+                <input type="submit" value="Update Settings" id="submit"><br><br>
+            </div>
+        </form>
+    </div>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audio = document.getElementById("audio");
+    var initalAudio = document.getElementById("homeMusic").value;
+    var audioGame = document.getElementById("audioGame");
+    var initalAudioGame = document.getElementById("gameMusic").value;
+    var audioFX = document.getElementById("audioFX");
+    var initialAudioFX = document.getElementById("soundFX");
+    audioFX.volume = '00.00';
+    audioGame.volume = '00.00';
+    audio.volume = initalAudio;
+    let brightnessSelector = document.getElementById("brightness");
+    let targetElement = document.getElementById("page");
+    let currentBrightness = brightnessSelector.value;
+    targetElement.style.filter = `brightness(${currentBrightness})`;
+    brightnessSelector.addEventListener("input", function () {
+        let currentBrightness = brightnessSelector.value;
+        targetElement.style.filter = `brightness(${currentBrightness})`;
+    });
+
+    let homeAudioSelector = document.getElementById("homeMusic");
+    homeAudioSelector.addEventListener("input", function () {
+        let currentAudio = homeAudioSelector.value;
+        audio.volume = currentAudio;
+        audioGame.volume = '00.00';
+        audioFX.volume = '00.00';
+    });
+
+    let gameAudioSelector = document.getElementById("gameMusic");
+    gameAudioSelector.addEventListener("input", function (){
+        let gameAudio = gameAudioSelector.value;
+        audio.volume = '00.00';
+        audioFX.volume = '00.00';
+        audioGame.volume = gameAudio;
+    });
+
+    let soundFXSelector = document.getElementById("soundFX");
+    soundFXSelector.addEventListener("input", function (){
+        let fxAudio = soundFXSelector.value;
+        audio.volume = '00.00';
+        audioGame.volume = '00.00';
+        audioFX.volume = fxAudio;
+    });
+    
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</html>

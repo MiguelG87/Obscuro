@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/nightmare.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .back-settings-icon {
+            display: none;
+        }
+        img {
+            position: absolute;
+            background-color: transparent;
+        }
+        .sides {
+            position: absolute;
+            width: 45%;
+            height: 61%;
+        }
+        #leftSide{
+            left: 5%;
+        }
+        #rightSide {
+            left: 50%;
+            border-left: 1px solid;
+        }
+        .homeMenu {
+            margin: 0;
+        }
+        #leaderboardContainer {
+            margin-left: 10%;
+        }
+        #refresh {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .home-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+        ul {
+            display: flex;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="nightmareBG">
+        <source src="/vid/nightmarebg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audioGame">
+        <source src="/audio/Nightmare.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <div  id="leftSide" class="sides"></div>
+        <div id="rightSide" class="sides"></div>
+    </div>
+    <div id="leaderboardContainer" class="homeMenu" style="display: none;"></div>
+    <span id="nightmareLevel" style="display:none;" th:text="${user.nightmare != null ? user.nightmare : '0'}"></span>
+    <form th:action="@{/nightmare/{id}/level(id=${nightmare.id})}" th:method="post" th:object="${nightmare}">
+        <input type="hidden" name="level" id="nightmarelevel" th:field="*{level}">
+        <button type="submit" id="hiddenButton" style="display:none;"></button>
+    </form>
+    <input type="hidden" name="levels" id="levels" th:value="*{nightmare.level}">
+    <input type="text" id="gameMusic" name="gameMusic" th:field="*{gamesettings.gameMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener('load', generateFaces);
+    var numberOfFaces = 5;
+    var level = 1;
+    const theLeftSide = document.querySelector("#leftSide");
+    const theRightSide = document.querySelector("#rightSide");
+    const levelInput = document.getElementById("nightmarelevel");
+    const nightmareLevel = parseInt(document.getElementById("levels").value);
+
+    function generateFaces () {
+        for (i = 0; i < numberOfFaces; i++) {
+            face = document.createElement("IMG");
+            face.src = '/img/joker.png';
+            var leftSide = document.getElementById("leftSide");
+            var leftHeight = leftSide.clientHeight
+            var theLeftHeight = leftHeight - 150;
+            let maxWidth = window.innerWidth < 369 ? theLeftHeight / 5 : window.innerWidth < 561 ? theLeftHeight / 4.5 : window.innerWidth < 770 ? theLeftHeight / 4 : window.innerWidth < 951 ? theLeftHeight / 3 : theLeftHeight;
+            let maxHeight = window.innerWidth < 800 ? theLeftHeight / 1.25 : theLeftHeight;
+            randomTop = Math.floor(Math.random() * maxHeight);
+            randomLeft = Math.floor(Math.random()* maxWidth);
+            face.style.top = randomTop + 'px';
+            face.style.left= randomLeft + 'px';
+            theLeftSide.appendChild(face);
+            levelInput.value = level;
+        }
+        const leftSideImages = theLeftSide.cloneNode(true);
+        leftSideImages.removeChild(leftSideImages.lastChild);
+        theRightSide.appendChild(leftSideImages);
+        theLeftSide.lastChild.addEventListener("click", nextLevel);
+        document.body.addEventListener("click", gameOver);
+    }
+
+    
+    function nextLevel(event) {
+            event.stopPropagation();
+            while (theLeftSide.firstChild){
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+            numberOfFaces += 5;
+            level += 1;
+            generateFaces();
+    }
+    function gameOver() {
+        
+        theLeftSide.lastChild.removeEventListener('click', nextLevel);
+        document.body.removeEventListener("click", gameOver);
+        
+        if (level > nightmareLevel) {
+            document.getElementById("hiddenButton").click();
+            
+        } else {
+            displayLeaderboard();
+        }
+        // alert('Game Over! \n\nYou reached Level: ' + level);
+        }
+
+        function displayLeaderboard() {
+            const title = document.getElementById("title");
+            const version = document.getElementById("version");
+            const company = document.getElementById("company");
+            const gameOver = document.getElementById("gameOver");
+            const levelResult = document.getElementById("levelResult");
+            const highLevel = document.getElementById("highLevel")
+            const backIcon = document.querySelector(".back-menu-icon");
+            const refreshIcon = document.querySelector(".back-nightmare-icon");
+            const leaderboardContainer = document.getElementById("leaderboardContainer");
+                leaderboardContainer.innerHTML = `
+        <h2 id="gameOver">Game Over!</h2>
+        <h2 id="levelResult">Level: ${level}</h2>
+        <h2 id="highLevel">Highest Level: ${nightmareLevel}</h2>
+    `;
+    leaderboardContainer.style.display = "block";
+    backIcon.style.display = "flex";
+    refreshIcon.style.display = "flex";
+    backIcon.style.color = "black";
+    refreshIcon.style.color = "black";
+
+
+    // Hide the homeMenu div
+    const homeMenu = document.querySelector(".homeMenu");
+    homeMenu.style.display = "none";
+}
+});
+    var audioGame = document.getElementById("audioGame");
+    var userAudioGame = document.getElementById("gameMusic").value;
+    audioGame.volume = userAudioGame;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

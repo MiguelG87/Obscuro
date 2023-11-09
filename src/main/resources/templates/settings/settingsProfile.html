@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <script type="text/javascript" th:src="@{/js/key.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/settingsProfile.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <style>
+        html {
+            overflow: hidden;
+        }
+        
+        .home-icon {
+            display: none;
+        }
+        .refresh-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .back-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="standardBG">
+        <source src="/vid/standardbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audio">
+        <source src="/audio/standard.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <h2>Edit Profile</h2>
+        <form th:action="@{/settings/{id}/profile(id= ${user.id})}" th:method="post" th:object="${user}">
+            <div>
+                <button id="upload-btn">Profile Picture</button>
+                <input type="hidden" id="profilePicture" name="profilePicture" th:field="*{profilePicture}">
+            </div>
+            <br>
+            <div>
+                <labe id="nameForm" for="name">Name: </label><br>
+                <input type="text" name="name" id="name" th:field="*{name}">
+            </div>
+            <br>
+            <div th:if="${usernameError}" style="color: red;" th:text="${usernameError}"></div>
+            <div>
+                <label id="userForm" for="username">Username:</label><br>
+                <input type="text" name="username" id="username" th:field="*{username}">
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Update Profile">
+            </div>
+            <div>
+                <input type="hidden" name="password" id="password" th:field="*{password}" th:value="*{password}"><br>
+            </div>
+            <div>
+                <input type="hidden" name="confirm_password" id="confirm_password" th:value="*{password}"><br>
+            </div>
+            
+        </form>
+    </div>
+    <input type="text" id="homeMusic" name="homeMusic" th:field="*{gamesettings.homeMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    const client = filestack.init(FILESTACK_KEY);
+    document.getElementById('upload-btn').addEventListener('click', function (event) {
+        event.preventDefault();
+        const options = {
+            onFileUploadFinished: (file) => {
+                console.log(file)
+                document.getElementById("profilePicture").value = file.url;
+            }
+        }
+        client.picker(options).open()
+    });
+    var audio = document.getElementById("audio");
+    var userAudio = document.getElementById("homeMusic").value;
+    audio.volume = userAudio;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

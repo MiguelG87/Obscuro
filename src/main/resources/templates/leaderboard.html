@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/leaderboard.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .back-settings-icon {
+            display: none;
+        }
+        html {
+            overflow: hidden;
+        }
+        #refresh {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+        
+        .column {
+            text-align: center;
+        }
+        .column a:hover {
+            color: red;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="standardBG">
+        <source src="/vid/standardbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audio">
+        <source src="/audio/standard.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <!-- Display SweetDreams Leaderboard -->
+        <div class="column">
+            <h3>Sweet Dreams:</h3>
+            <ol>
+                <th:block th:each="sweetdreamstop, iterationStat: ${sweetdreamstop}">
+                    <li>
+                        <span th:text="${iterationStat.index + 1}"></span>. <a th:href="@{/profile/{id}(id=${sweetdreamstop.user.id})}" th:text="${sweetdreamstop.user.username}"></a> - Level :   <span th:text="${sweetdreamstop.level}"></span><img th:src="@{${sweetdreamstop.user.profilePicture}}">
+                    </li>
+                </th:block>
+            </ol>
+        </div>
+
+        <div class="column">
+            <!-- Display Nightmare Leaderboard -->
+            <h3>Nightmare:</h3>
+            <ol>
+                <th:block th:each="nightmaretop, iterationStat: ${nightmaretop}">
+                    <li>
+                        <span th:text="${iterationStat.index + 1}"></span>. <a th:href="@{/profile/{id}(id=${nightmaretop.user.id})}" th:text="${nightmaretop.user.username}"></a> - Level: <span th:text="${nightmaretop.level}"></span><img th:src="@{${nightmaretop.user.profilePicture}}">
+                    </li>
+                </th:block>
+            </ol>
+        </div>
+
+        <div class="column">
+            <!-- Display Sleep Paralysis Leaderboard -->
+            <h3>Sleep Paralysis:</h3>
+            <ol>
+                <th:block th:each="sleepparalysistop, iterationStat: ${sleepparalysistop}">
+                    <li>
+                        <span th:text="${iterationStat.index + 1}"></span>. <a th:href="@{/profile/{id}(id=${sleepparalysistop.user.id})}" th:text="${sleepparalysistop.user.username}"></a> - Level: <span th:text="${sleepparalysistop.level}"></span><img th:src="@{${sleepparalysistop.user.profilePicture}}">
+                    </li>
+                </th:block>
+            </ol>
+        </div>
+    </div>
+    <input type="text" id="homeMusic" name="homeMusic" th:field="*{gamesettings.homeMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audio = document.getElementById("audio");
+    var userAudio = document.getElementById("homeMusic").value;
+    audio.volume = userAudio;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

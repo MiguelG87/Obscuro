@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"  class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/register.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .back-settings-icon {
+            display: none;
+        }
+        html {
+            overflow: hidden;
+        }
+        
+        #back {
+            display: none;
+        }
+        #refresh {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+        .loginBtn {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<body class="container">
+    <video playsinline autoplay muted loop id="standardBG">
+        <source src="/vid/standardbg.mp4" type="video/mp4">
+    </video>
+    <audio controls autoplay loop style="display: none;" id="audio">
+        <source src="/audio/standard.mp3" type="audio/mpeg">
+    </audio>
+    <div class="homeMenu">
+        <h2>Create Account</h2>
+        <small>Already Registered? Login <a class="loginBtn" href="/login">here.</a></small>
+        <form th:action="@{/register}" th:method="post" th:object="${user}" onsubmit="return validatePassword()">
+            <label id="nameForm" for="name">Name:</label>
+            <br>
+            <input type="text" name="name" id="name" th:field="*{name}">
+            <br>
+            <label id="usernameForm" for="username">Username:</label>
+            <br>
+            <input type="text" name="username" id="username" th:field="*{username}">
+            <div th:if="${usernameError}" style="color: red;" th:text="${usernameError}"></div>
+            <br>
+            <label id="passwordForm" for="password">Password:</label>
+            <br>
+            <input type="password" name="password" id="password" th:field="*{password}"><br>
+            <span id="errorPassword" th:if="${passwordError}"  th:text="${passwordError}" style="color: red;"></span>
+            <br>
+            <small>*Password must be at least 8-16 characters long and contain at least (1) lowercase, (1) uppercase, (1) digit, and (1) special character</small>
+            <br>
+            <label id="passwordConfirmForm" for="passwordConfirm">Confirm Password:</label>
+            <br>
+            <input type="password" name="passwordConfirm" id="passwordConfirm">
+            <div id="passwordMatchError" style="color: red; font-size: 1vh;"></div>
+            <input type="submit" value="Create Account">
+        </form>
+    </div>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+        var passwordConfirm = document.getElementById("passwordConfirm").value;
+        var passwordMatchError = document.getElementById("passwordMatchError");
+
+        if (password !== passwordConfirm) {
+            passwordMatchError.textContent = "Passwords do not match.";
+            return false;
+        } else {
+            passwordMatchError.textContent = "";
+            return true;
+        }
+    }
+    var audio = document.getElementById("audio");
+    audio.volume = .02;
+</script>
+</html>

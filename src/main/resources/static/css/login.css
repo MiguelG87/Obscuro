@@ -1,0 +1,114 @@
+@media (min-width: 1px) and (max-width: 368px) {
+    h2 {
+        font-size: 6vh;
+    }
+    h3 {
+        font-size: 2.5vh;
+    }
+    input {
+        width: 60%;
+        padding: .50% .25%;
+        font-size: 3vh;
+        margin-top: 1%;
+        border-radius: 6px;
+    }
+    #username, #password, #passwordForm, #userForm {
+        width: 60%;
+        font-size: 3vh;
+    }
+}
+@media (min-width: 369px) and (max-width: 560px) {
+    h2 {
+        font-size: 5vh;
+    }
+    h3 {
+        font-size: 2.5vh;
+    }
+    input {
+        width: 60%;
+        padding: .50% .25%;
+        font-size: 3vh;
+        margin-top: 1%;
+        border-radius: 6px;
+    }
+    #username, #password, #passwordForm, #userForm {
+        width: 60%;
+        font-size: 3vh;
+    }
+}
+@media (min-width: 561px) and (max-width: 769px) {
+    h2 {
+        font-size: 6vh;
+    }
+    h3 {
+        font-size: 2.5vh;
+    }
+    input {
+        width: 60%;
+        padding: .50% .25%;
+        font-size: 3vh;
+        margin-top: 1%;
+        border-radius: 6px;
+    }
+    #username, #password, #passwordForm, #userForm {
+        width: 60%;
+        font-size: 3vh;
+    }
+}
+@media (min-width: 769px) and (max-width: 950px) {
+    h2 {
+        font-size: 6vh;
+    }
+    h3 {
+        font-size: 2.5vh;
+    }
+    input {
+        width: 60%;
+        padding: .50% .25%;
+        font-size: 3vh;
+        margin-top: 1%;
+        border-radius: 6px;
+    }
+    #username, #password, #passwordForm, #userForm {
+        width: 60%;
+        font-size: 3vh;
+    }
+}
+@media (min-width: 951px) and (max-width: 1300px) {
+    h2 {
+        font-size: 4vh;
+    }
+    h3 {
+        font-size: 2vh;
+    }
+    input {
+        width: 20.75%;
+        padding: .50% .25%;
+        font-size: 2vh;
+        margin-top: .55%;
+        border-radius: 4px;
+    }
+    #username, #password, #passwordForm, #userForm {
+        width: 20%;
+        font-size: 2vh;
+    }
+}
+@media (min-width: 1301px) {
+    h2 {
+        font-size: 4vh;
+    }
+    h3 {
+        font-size: 2vh;
+    }
+    input {
+        width: 20.75%;
+        padding: .50% .25%;
+        font-size: 2vh;
+        margin-top: .55%;
+        border-radius: 4px;
+    }
+    #username, #password, #passwordForm, #userForm {
+        width: 20%;
+        font-size: 2vh;
+    }
+}

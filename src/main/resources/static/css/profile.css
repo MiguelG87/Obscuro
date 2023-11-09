@@ -1,0 +1,422 @@
+@media (min-width: 1px) and (max-width: 368px) {
+    .homeMenu {
+        margin-top: 10vh;
+        margin-left: 4vw;
+    }
+    body {
+        height: 50vh;
+    }
+    .profileCard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80vw;
+        height: 30vh;
+        align-items: center;
+        background-color: rgba(0,0,0,.75);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3%;
+    }
+    .profile {
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #profilePicture {
+        height: 70%;
+        width: 70%;
+    }
+    img {
+        width: 100%;
+        border: 1px;
+        border-style: none;
+        border-radius: 50%;
+    }
+    .topStats {
+        width: 60%;
+        height: 50%;
+        margin: auto;
+        margin-bottom: 0;
+        font-size: 3vh;
+        background-color: transparent;
+        text-align: center;
+    }
+    .names {
+        width: 30%;
+        height: 40%;
+        margin: auto;
+        background-color: transparent;
+        font-size: 2.5vh;
+    }
+    .badges {
+        display: flex;
+        width: 60%;
+        height: 40%;
+        margin: auto;
+        font-size: 5.5vh;
+        text-align: center;
+        background-color: transparent;
+    }
+    #sweetDreamsBadgeContainer {
+        width: 33%;
+    }
+    #nightmareBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+    #sleepParalysisBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+}
+@media (min-width: 369px) and (max-width: 560px) {
+    .homeMenu {
+        margin-top: 10vh;
+        margin-left: 7vw;
+    }
+    body {
+        height: 50vh;
+    }
+    .profileCard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80vw;
+        height: 30vh;
+        align-items: center;
+        background-color: rgba(0,0,0,.75);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3%;
+    }
+    .profile {
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #profilePicture {
+        height: 70%;
+        width: 70%;
+    }
+    img {
+        width: 100%;
+        border: 1px;
+        border-style: none;
+        border-radius: 50%;
+    }
+    .topStats {
+        width: 60%;
+        height: 50%;
+        margin: auto;
+        margin-bottom: 0;
+        font-size: 3vh;
+        background-color: transparent;
+        text-align: center;
+    }
+    .names {
+        width: 30%;
+        height: 40%;
+        margin: auto;
+        background-color: transparent;
+        font-size: 2.5vh;
+    }
+    .badges {
+        display: flex;
+        width: 60%;
+        height: 40%;
+        margin: auto;
+        font-size: 5.5vh;
+        text-align: center;
+        background-color: transparent;
+    }
+    #sweetDreamsBadgeContainer {
+        width: 33%;
+    }
+    #nightmareBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+    #sleepParalysisBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+}
+@media (min-width: 561px) and (max-width: 769px) {
+    .homeMenu {
+        margin-top: 10vh;
+        margin-left: 7vw;
+    }
+    body {
+        height: 50vh;
+    }
+    .profileCard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80vw;
+        height: 30vh;
+        align-items: center;
+        background-color: rgba(0,0,0,.75);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3%;
+    }
+    .profile {
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #profilePicture {
+        height: 80%;
+        width: 80%;
+    }
+    img {
+        width: 100%;
+        border: 1px;
+        border-style: none;
+        border-radius: 50%;
+    }
+    .topStats {
+        width: 60%;
+        height: 50%;
+        margin: auto;
+        margin-bottom: 0;
+        font-size: 4vh;
+        background-color: transparent;
+        text-align: center;
+    }
+    .names {
+        width: 30%;
+        height: 40%;
+        margin: auto;
+        background-color: transparent;
+        font-size: 2.5vh;
+    }
+    .badges {
+        display: flex;
+        width: 60%;
+        height: 40%;
+        margin: auto;
+        font-size: 5.5vh;
+        text-align: center;
+        background-color: transparent;
+    }
+    #sweetDreamsBadgeContainer {
+        width: 33%;
+    }
+    #nightmareBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+    #sleepParalysisBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+}
+@media (min-width: 769px) and (max-width: 950px) {
+    .homeMenu {
+        margin-top: 10vh;
+        margin-left: 7vw;
+    }
+    body {
+        height: 50vh;
+    }
+    .profileCard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80vw;
+        height: 30vh;
+        align-items: center;
+        background-color: rgba(0,0,0,.75);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3%;
+    }
+    .profile {
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #profilePicture {
+        height: 80%;
+        width: 80%;
+    }
+    img {
+        width: 100%;
+        border: 1px;
+        border-style: none;
+        border-radius: 50%;
+    }
+    .topStats {
+        width: 60%;
+        height: 50%;
+        margin: auto;
+        margin-bottom: 0;
+        font-size: 4vh;
+        background-color: transparent;
+        text-align: center;
+    }
+    .names {
+        width: 30%;
+        height: 40%;
+        margin: auto;
+        background-color: transparent;
+        font-size: 2.5vh;
+    }
+    .badges {
+        display: flex;
+        width: 60%;
+        height: 40%;
+        margin: auto;
+        font-size: 5.5vh;
+        text-align: center;
+        background-color: transparent;
+    }
+    #sweetDreamsBadgeContainer {
+        width: 33%;
+    }
+    #nightmareBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+    #sleepParalysisBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+}
+@media (min-width: 951px) and (max-width: 1300px) {
+    .profileCard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 40vw;
+        height: 40vh;
+        align-items: center;
+        background-color: rgba(0,0,0,.75);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3%;
+    }
+    .profile {
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #profilePicture {
+        height: 100%;
+        width: 90%;
+    }
+    img {
+        width: 100%;
+        border: 1px;
+        border-style: none;
+        border-radius: 50%;
+    }
+    .topStats {
+        width: 60%;
+        height: 50%;
+        margin: auto;
+        margin-bottom: 0;
+        font-size: 4.5vh;
+        background-color: transparent;
+        text-align: center;
+    }
+    .names {
+        width: 30%;
+        height: 40%;
+        margin: auto;
+        background-color: transparent;
+    }
+    .badges {
+        display: flex;
+        width: 60%;
+        height: 40%;
+        margin: auto;
+        font-size: 5.5vh;
+        text-align: center;
+        background-color: transparent;
+    }
+    #sweetDreamsBadgeContainer {
+        width: 33%;
+    }
+    #nightmareBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+    #sleepParalysisBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+}
+@media (min-width: 1301px) {
+    .profileCard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 40vw;
+        height: 40vh;
+        align-items: center;
+        background-color: rgba(0,0,0,.75);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3%;
+    }
+    .profile {
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #profilePicture {
+        height: 100%;
+        width: 90%;
+    }
+    img {
+        width: 100%;
+        border: 1px;
+        border-style: none;
+        border-radius: 50%;
+    }
+    .topStats {
+        width: 60%;
+        height: 50%;
+        margin: auto;
+        margin-bottom: 0;
+        font-size: 4.5vh;
+        background-color: transparent;
+        text-align: center;
+    }
+    .names {
+        width: 30%;
+        height: 40%;
+        margin: auto;
+        background-color: transparent;
+    }
+    .badges {
+        display: flex;
+        width: 60%;
+        height: 40%;
+        margin: auto;
+        font-size: 5.5vh;
+        text-align: center;
+        background-color: transparent;
+    }
+    #sweetDreamsBadgeContainer {
+        width: 33%;
+    }
+    #nightmareBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+    #sleepParalysisBadgeContainer {
+        width: 33%;
+        height: 33%;
+    }
+}

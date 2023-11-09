@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/sweetDreams.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        
+        #refresh {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .home-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .back-menu-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-sleepparalysis-icon {
+            display: none;
+        }
+        ul {
+            display: flex;
+        }
+        .back-settings-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<video playsinline autoplay muted loop id="sweetDreamsBG">
+    <source src="/vid/sweetdreamsbg.mp4" type="video/mp4">
+</video>
+<video playsinline autoplay muted loop id="sweetDreamsLostBG" style="display: none;">
+    <source src="/vid/sweetdreamslostbg.mp4" type="video/mp4">
+</video>
+<audio controls autoplay loop style="display: none;" id="audioGame">
+    <source src="/audio/SweetDreams.mp3" type="audio/mpeg">
+</audio>
+<body class="container">
+    <div class="homeMenu">
+        <div  id="leftSide" class="sides"></div>
+        <div id="rightSide" class="sides"></div>
+    </div>
+    <div id="leaderboardContainer" class="homeMenu" style="display: none;"></div>
+    <span id="sweetDreamLevel" style="display:none;" th:text="${user.sweetDreams != null ? user.sweetDreams : '0'}"></span>
+    <form th:action="@{/sweetdreams/{id}/level(id=${sweetdreams.id})}" th:method="post" th:object="${sweetdreams}">
+        <input type="hidden" name="level" id="sweetDreamslevel" th:field="*{level}">
+        <button type="submit" id="hiddenButton" style="display:none;"></button>
+    </form>
+    <input type="hidden" name="levels" id="levels" th:value="*{sweetdreams.level}">
+    <input type="text" id="gameMusic" name="gameMusic" th:field="*{gamesettings.gameMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    window.addEventListener('load', generateFaces);
+    let numberOfFaces = 5;
+    let level = 1;
+    const theLeftSide = document.querySelector("#leftSide");
+    const theRightSide = document.querySelector("#rightSide");
+
+    const levelInput = document.getElementById("sweetDreamslevel");
+
+    const sweetDreamLevel = parseInt(document.getElementById("levels").value);
+
+    function generateFaces () {
+        for (i = 0; i < numberOfFaces; i++) {
+            face = document.createElement("IMG");
+            face.src = '/img/smile.png';
+            var leftSide = document.getElementById("leftSide");
+            var leftHeight = leftSide.clientHeight
+            var theLeftHeight = leftHeight - 150;
+            let maxWidth = window.innerWidth < 369 ? theLeftHeight / 5 : window.innerWidth < 561 ? theLeftHeight / 4.5 : window.innerWidth < 770 ? theLeftHeight / 4 : window.innerWidth < 951 ? theLeftHeight / 3 : theLeftHeight;
+            let maxHeight = window.innerWidth < 800 ? theLeftHeight / 1.25 : theLeftHeight;
+            randomTop = Math.floor(Math.random() * maxHeight);
+            randomLeft = Math.floor(Math.random()* maxWidth);
+            face.style.top = randomTop + 'px';
+            face.style.left= randomLeft + 'px';
+            theLeftSide.appendChild(face);
+            levelInput.value = level;
+        }
+        const leftSideImages = theLeftSide.cloneNode(true);
+        leftSideImages.removeChild(leftSideImages.lastChild);
+        theRightSide.appendChild(leftSideImages);
+        theLeftSide.lastChild.addEventListener("click", nextLevel);
+        document.body.addEventListener("click", gameOver);
+    }
+
+    
+    function nextLevel(event) {
+            event.stopPropagation();
+            while (theLeftSide.firstChild){
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+            numberOfFaces += 5;
+            level += 1;
+            generateFaces();
+    }
+    function gameOver() {
+        theLeftSide.lastChild.removeEventListener('click', nextLevel);
+        document.body.removeEventListener("click", gameOver);
+        if (level > sweetDreamLevel) {
+            document.getElementById("hiddenButton").click();
+        }
+        else {
+            displayLeaderboard();
+        }
+        }
+
+
+        function displayLeaderboard() {
+            const background = document.getElementById("sweetDreamsBG");
+            const backIcon = document.querySelector(".back-menu-icon");
+            const refreshIcon = document.querySelector(".back-sweetdreams-icon");
+            const leaderboardContainer = document.getElementById("leaderboardContainer");
+                leaderboardContainer.innerHTML = `
+        <h2>Game Over!</h2>
+        <h2>Level: ${level}</h2>
+        <h2>Highest Level: ${sweetDreamLevel}</h2>
+    `;
+    leaderboardContainer.style.display = "block";
+    backIcon.style.display = "flex";
+    refreshIcon.style.display = "flex";
+
+    // Hide the homeMenu div
+    const homeMenu = document.querySelector(".homeMenu");
+    homeMenu.style.display = "none";
+}
+    var audioGame = document.getElementById("audioGame");
+    var userAudioGame = document.getElementById("gameMusic").value;
+    audioGame.volume = userAudioGame;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

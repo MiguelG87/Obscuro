@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/load.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<video playsinline autoplay muted loop id="sleepParalysisBG">
+    <source src="/vid/loadingbg.mp4" type="video/mp4">
+</video>
+<audio controls autoplay style="display: none;" id="audioFX">
+    <source src="/audio/StaticSound.mp3" type="audio/mpeg">
+</audio>
+<h1>'Til Next Time...</h1>
+<body>
+<script>
+    setTimeout(function(){
+        window.location.href = '/';
+    }, 1000); //Adjust your time
+    var audio = document.getElementById("audio");
+    audio.volume = .10;
+</script>
+</body>
+</html>

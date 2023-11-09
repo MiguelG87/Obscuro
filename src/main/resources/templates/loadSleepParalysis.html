@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:debug="true" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/load.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        video {
+            filter: saturate(800%);
+        }
+    </style>
+</head>
+<video playsinline autoplay muted loop id="sleepParalysisBG">
+    <source src="/vid/loadingbg.mp4" type="video/mp4">
+</video>
+<audio controls autoplay style="display: none;" id="audioFX">
+    <source src="/audio/StaticSound.mp3" type="audio/mpeg">
+</audio>
+<h1>Good luck...</h1>
+<input type="text" id="soundFX" name="soundFX" th:field="*{gamesettings.soundFX}" style="display: none;">
+<input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+<body>
+<script>
+    setTimeout(function(){
+        window.location.href = '/sleepparalysis';
+    }, 2000); //Adjust your time
+    var audioFX = document.getElementById("audioFX");
+    var userAudioFX = document.getElementById("soundFX").value;
+    audioFX.volume = userAudioFX;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</body>
+</html>

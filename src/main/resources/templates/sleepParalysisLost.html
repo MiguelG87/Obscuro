@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" id="page" class="no-highlight">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscuro</title>
+    <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/sleepParalysisLost.css}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=creepster">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #leaderboardContainer {
+            margin-left: 10%;
+        }
+        #refresh {
+            display: none;
+        }
+        #back {
+            display: none;
+        }
+        .settings-icon {
+            display: none;
+        }
+        .profile-icon {
+            display: none;
+        }
+        .leaderboard-icon {
+            display: none;
+        }
+        .home-icon {
+            display: none;
+        }
+        .back-sweetdreams-icon {
+            display: none;
+        }
+        .back-nightmare-icon {
+            display: none;
+        }
+        .back-settings-icon {
+            display: none;
+        }
+    </style>
+</head>
+<header th:replace="~{partials/header :: header}"></header>
+<audio controls autoplay style="display: none;" id="audioGame">
+    <source src="/audio/scary.mp3" type="audio/mpeg">
+</audio>
+<body class="container">
+    <div class="homeMenu">
+        <h2 id="newHigh">New High Score!</h2>
+        <h3 id="level">Level: <span th:text="${sleepparalysis.level}"></span></h3>
+        <h4 id="leaderboard">Leaderboard:</h4>
+        <ol>
+            <th:block th:each="sleepparalysistop: ${sleepparalysistop}">
+                <li>
+                    <span th:text="${sleepparalysistop.user.username}"></span> - Level: <span th:text="${sleepparalysistop.level}"></span>
+                </li>
+            </th:block>
+        </ol>
+    </div>
+    <input type="text" id="gameMusic" name="gameMusic" th:field="*{gamesettings.gameMusic}" style="display: none;">
+    <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
+</body>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+<script>
+    var audioGame = document.getElementById("audioGame");
+    var userAudioGame = document.getElementById("gameMusic").value;
+    audioGame.volume = userAudioGame;
+    var brightness = document.getElementById("page");
+    var userBrightness = document.getElementById("brightness");
+    let currentBrightness = userBrightness.value;
+    brightness.style.filter = `brightness(${currentBrightness})`;
+</script>
+</html>

@@ -1,0 +1,148 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0; /* Start with images completely transparent */
+    }
+    50% {
+      opacity: 1; /* Middle of the animation, fully visible */
+    }
+    60% {
+      opacity: 1; /* Middle of the animation, fully visible */
+    }
+    100% {
+      opacity: 0; /* End with images completely transparent */
+    }
+}
+
+video {
+    background-color: transparent;
+    animation: fadeIn 6s linear infinite; /* Adjust animation duration as needed */
+    overflow: hidden;
+
+}
+
+img {
+    position: absolute;
+    background-color: transparent;
+    animation: fadeIn 6s linear infinite; /* Adjust the animation duration as needed */
+}
+
+
+html {
+    background-color: transparent;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#nightmareBG {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+@keyframes fadeInColor {
+    0% {
+        color: black; /* Start with images completely transparent */
+    }
+    50% {
+        color: white; /* Middle of the animation, fully visible */
+    }
+    60% {
+        color: white; /* Middle of the animation, fully visible */
+    }
+    100% {
+        color: black; /* End with images completely transparent */
+    }
+}
+
+#title, #version, #company, .back-menu-icon, .back-nightmare-icon, #newHigh, #level, #leaderboard, .fade {
+    background-color: transparent;
+    animation: fadeInColor 6s linear infinite; /* Adjust animation duration as needed */
+
+}
+
+@media (min-width: 1px) and (max-width: 368px) {
+    #newHigh {
+        margin-left: 0;
+    }
+    
+    #leaderboard {
+        margin-bottom: 0;
+    }
+    
+    ol {
+        padding-left: 25px;
+    }
+}
+@media (min-width: 369px) and (max-width: 560px) {
+    #newHigh {
+        margin-left: 0;
+    }
+    
+    #leaderboard {
+        margin-bottom: 0;
+    }
+    
+    ol {
+        padding-left: 25px;
+    }
+}
+@media (min-width: 561px) and (max-width: 769px) {
+    #newHigh {
+        margin-left: 0;
+    }
+    
+    #leaderboard {
+        margin-bottom: 0;
+    }
+    
+    ol {
+        padding-left: 25px;
+    }
+}
+@media (min-width: 769px) and (max-width: 950px) {
+    #newHigh {
+        margin-left: 0;
+    }
+    
+    #leaderboard {
+        margin-bottom: 0;
+    }
+    
+    ol {
+        padding-left: 25px;
+    }
+}
+@media (min-width: 951px) and (max-width: 1300px) {
+    #newHigh {
+        margin-left: 0;
+    }
+    
+    #leaderboard {
+        margin-bottom: 0;
+    }
+    
+    ol {
+        padding-left: 25px;
+    }
+}
+@media (min-width: 1301px) {
+    #newHigh {
+        margin-left: 0;
+    }
+    
+    #leaderboard {
+        margin-bottom: 0;
+    }
+    
+    ol {
+        padding-left: 25px;
+    }
+}
+
+
