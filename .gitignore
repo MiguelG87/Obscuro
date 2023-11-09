@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 src/main/resources/static/js/key.js
+/static/key.js
 ### STS ###
 .apt_generated
 .classpath
