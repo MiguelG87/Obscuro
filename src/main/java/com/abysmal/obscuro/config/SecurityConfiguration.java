@@ -68,7 +68,7 @@ public class SecurityConfiguration {
                                 ).permitAll()
 
                         // allow loading of static resources
-                        .requestMatchers("/css/**", "/js/**", "/img/**","/keys.js", "/favicon.ico", "/vid/**", "/audio/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/favicon.ico", "/vid/**", "/audio/**").permitAll()
                 )
                 /* Login configuration */
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/load/login", true))
