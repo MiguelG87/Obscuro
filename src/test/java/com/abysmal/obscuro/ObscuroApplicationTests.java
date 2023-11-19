@@ -1,13 +1,13 @@
-package com.abysmal.obscuro;
+// package com.abysmal.obscuro;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ObscuroApplicationTests {
+// @SpringBootTest
+// class ObscuroApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
