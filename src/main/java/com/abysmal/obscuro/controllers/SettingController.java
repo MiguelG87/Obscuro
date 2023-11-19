@@ -99,7 +99,6 @@ public class SettingController {
         
     }
     GameSettings gameSettings = gameSettingsDao.findByUser(user);
-    model.addAttribute("FILESTACK_KEY", "AhDqzkZ1jR9aLMXnoEicMz");
     model.addAttribute("gamesettings", gameSettings);
     return "settings/settingsProfile";
 }
