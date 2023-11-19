@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obscuro</title>
-    <script type="text/javascript" th:src="@{/js/key.js}"></script>
     <link rel="stylesheet" th:href="@{/css/template.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/standard.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/settingsProfile.css}" type="text/css">
@@ -94,7 +93,7 @@
 </body>
 <footer th:replace="~{partials/footer :: footer}"></footer>
 <script>
-    const client = filestack.init(FILESTACK_KEY);
+    const client = filestack.init('${FILESTACK_KEY}');
     document.getElementById('upload-btn').addEventListener('click', function (event) {
         event.preventDefault();
         const options = {
