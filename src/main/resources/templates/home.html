@@ -41,6 +41,12 @@
         .back-sleepparalysis-icon {
             display: none;
         }
+        form {
+            margin:0;
+            padding: 0;
+            border: 0;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="container">
@@ -55,11 +61,9 @@
         <a id="loginBtn" sec:authorize="!isAuthenticated()" href="/login">Login</a>
         <a id="registerBtn" sec:authorize="!isAuthenticated()" href="/register">Create Account</a>
         <a id="mainMenuBtn" sec:authorize="isAuthenticated()" href="/main">Main Menu</a>
-        <div sec:authorize="isAuthenticated()">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout"/>
-            </form>
-        </div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
     </div>
     <input type="text" id="homeMusic" name="homeMusic" th:field="*{gamesettings.homeMusic}" style="display: none;">
     <input type="text" id="brightness" name="brightness" th:field="*{gamesettings.brightness}" style="display: none;"/>
