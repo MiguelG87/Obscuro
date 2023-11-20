@@ -23,6 +23,9 @@ html {
     overflow: hidden;
 }
 @media (min-width: 1px) and (max-width: 368px) {
+    .homeMenu {
+        margin-left: 0;
+    }
     .sides {
         position: absolute;
         width: 50%;
@@ -31,9 +34,6 @@ html {
     #rightSide {
         left: 50%;
         border-left: 1px solid;
-    }
-    .homeMenu {
-        margin-left: 10vw;
     }
     #leaderboardContainer {
         margin-left: 10%;
@@ -46,6 +46,9 @@ html {
     }
 }
 @media (min-width: 369px) and (max-width: 560px) {
+    .homeMenu {
+        margin-left: 0;
+    }
     .sides {
         position: absolute;
         width: 50%;
@@ -54,9 +57,6 @@ html {
     #rightSide {
         left: 50%;
         border-left: 1px solid;
-    }
-    .homeMenu {
-        margin-left: 10vw;
     }
     #leaderboardContainer {
         margin-left: 10%;
@@ -69,6 +69,9 @@ html {
     }
 }
 @media (min-width: 561px) and (max-width: 769px) {
+    .homeMenu {
+        margin-left: 0;
+    }
     .sides {
         position: absolute;
         width: 50%;
@@ -77,9 +80,6 @@ html {
     #rightSide {
         left: 50%;
         border-left: 1px solid;
-    }
-    .homeMenu {
-        margin-left: 10vw;
     }
     #leaderboardContainer {
         margin-left: 10%;
@@ -92,6 +92,9 @@ html {
     }
 }
 @media (min-width: 769px) and (max-width: 950px) {
+    .homeMenu {
+        margin-left: 0;
+    }
     .sides {
         position: absolute;
         width: 50%;
@@ -100,9 +103,6 @@ html {
     #rightSide {
         left: 50%;
         border-left: 1px solid;
-    }
-    .homeMenu {
-        margin-left: 10vw;
     }
     #leaderboardContainer {
         margin-left: 10%;

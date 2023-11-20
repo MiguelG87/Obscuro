@@ -91,9 +91,9 @@ public String submitRegistrationForm(@ModelAttribute User user, Model model) {
     GameSettings gameSettings = new GameSettings();
     gameSettings.setUser(user);
     gameSettings.setBrightness(01.00);
-    gameSettings.setGameMusic(00.10);
-    gameSettings.setHomeMusic(00.02);
-    gameSettings.setSoundFX(00.10);
+    gameSettings.setGameMusic(00.20);
+    gameSettings.setHomeMusic(00.20);
+    gameSettings.setSoundFX(00.25);
     gameSettingsDao.save(gameSettings);
     return "loadRegister";
 }

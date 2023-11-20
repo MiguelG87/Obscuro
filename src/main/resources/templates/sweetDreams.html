@@ -94,10 +94,14 @@
             face = document.createElement("IMG");
             face.src = '/img/smile.png';
             var leftSide = document.getElementById("leftSide");
-            var leftHeight = leftSide.clientHeight
-            var theLeftHeight = leftHeight - 150;
-            let maxWidth = window.innerWidth < 369 ? theLeftHeight / 5 : window.innerWidth < 561 ? theLeftHeight / 4.5 : window.innerWidth < 770 ? theLeftHeight / 4 : window.innerWidth < 951 ? theLeftHeight / 3 : theLeftHeight;
-            let maxHeight = window.innerWidth < 800 ? theLeftHeight / 1.25 : theLeftHeight;
+            var leftHeight = leftSide.clientHeight;
+            var leftWidth = leftSide.clientWidth;
+            let maxWidth =
+            window.innerWidth < 951 ? leftWidth - 90 :
+            leftWidth - 150;
+            let maxHeight =
+            window.innerWidth < 951 ? leftHeight - 90 :
+            leftHeight - 150;
             randomTop = Math.floor(Math.random() * maxHeight);
             randomLeft = Math.floor(Math.random()* maxWidth);
             face.style.top = randomTop + 'px';
