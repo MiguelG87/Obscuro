@@ -19,10 +19,10 @@ html {
         font-size: 3.5vh;
     }
     input {
-        width: 40%;
+        width: 60%;
         text-align: start;
         padding: 2% 0;
-        font-size: 3.25vh;
+        font-size: 3.5vh;
         font-style: normal;
         border: 0;
         margin: 0;
@@ -44,10 +44,10 @@ html {
         font-size: 3.5vh;
     }
     input {
-        width: 40%;
+        width: 60%;
         text-align: start;
         padding: 2% 0;
-        font-size: 3.25vh;
+        font-size: 3.5vh;
         font-style: normal;
         border: 0;
     }
@@ -63,12 +63,12 @@ html {
         width: 14.5%;
     }
     #mainMenuBtn {
-        width: 45%;
+        width: 60%;
         padding: 2% 0;
         font-size: 3.5vh;
     }
     input {
-        width: 30%;
+        width: 60%;
         text-align: start;
         padding: 2% 0;
         font-size: 3.5vh;
