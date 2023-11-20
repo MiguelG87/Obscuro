@@ -23,9 +23,6 @@ html {
     overflow: hidden;
 }
 @media (min-width: 1px) and (max-width: 368px) {
-    .homeMenu {
-        margin-left: 0;
-    }
     .sides {
         position: absolute;
         width: 50%;
@@ -46,9 +43,6 @@ html {
     }
 }
 @media (min-width: 369px) and (max-width: 560px) {
-    .homeMenu {
-        margin-left: 0;
-    }
     .sides {
         position: absolute;
         width: 50%;
@@ -92,9 +86,6 @@ html {
     }
 }
 @media (min-width: 769px) and (max-width: 950px) {
-    .homeMenu {
-        margin-left: 0;
-    }
     .sides {
         position: absolute;
         width: 50%;
