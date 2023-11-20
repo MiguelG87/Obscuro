@@ -94,5 +94,13 @@
     var userBrightness = document.getElementById("brightness");
     let currentBrightness = userBrightness.value;
     brightness.style.filter = `brightness(${currentBrightness})`;
+    function onLoadFunction() {
+    var videos = document.querySelectorAll('video');
+    videos.forEach(function(video) {
+    video.play();
+    audio.play();
+    });
+}
+window.onload = onLoadFunction;
 </script>
 </html>

@@ -1,45 +1,57 @@
 @media (min-width: 1px) and (max-width: 368px) {
     #sweetDreamsBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #nightmareBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #sleepParalysisBtn {
         width: 20%;
+        padding: 2% 0;
     }
 }
 @media (min-width: 369px) and (max-width: 560px) {
     #sweetDreamsBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #nightmareBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #sleepParalysisBtn {
         width: 20%;
+        padding: 2% 0;
     }
 }
 @media (min-width: 561px) and (max-width: 769px) {
     #sweetDreamsBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #nightmareBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #sleepParalysisBtn {
         width: 20%;
+        padding: 2% 0;
     }
 }
 @media (min-width: 769px) and (max-width: 950px) {
     #sweetDreamsBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #nightmareBtn {
         width: 20%;
+        padding: 2% 0;
     }
     #sleepParalysisBtn {
         width: 20%;
+        padding: 2% 0;
     }
 }
 @media (min-width: 951px) and (max-width: 1300px) {

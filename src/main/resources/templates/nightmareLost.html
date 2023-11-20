@@ -63,7 +63,7 @@
         <ol>
             <th:block th:each="nightmaretop: ${nightmaretop}">
                 <li class="fade">
-                    <span class="fade" th:text="${nightmaretop.user.username}"></span> - Level: <span class="fade" th:text="${nightmare.level != '0' ? nightmare.level : '1'}"></span>
+                    <span class="fade" th:text="${nightmaretop.user.username}"></span> - Level: <span class="fade" th:text="${nightmaretop.level}"></span>
                 </li>
             </th:block>
         </ol>
