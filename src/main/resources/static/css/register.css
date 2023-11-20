@@ -63,7 +63,7 @@
         font-size: 2vh;
     }
     input {
-        width: 30%;
+        width: 30vw;
         padding: .50% .25%;
         font-size: 2vh;
         margin-top: .55%;
@@ -111,6 +111,7 @@
 @media (min-width: 951px) and (max-width: 1300px) {
     h2 {
         font-size: 4vh;
+        margin-top: 0;
     }
     small {
         font-size: 2vh;

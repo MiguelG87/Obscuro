@@ -95,12 +95,10 @@ html {
     }
     #loginBtn {
         width: 26%;
-        padding: 2%;
         font-size: 4vh;
     }
     #registerBtn {
         width: 65%;
-        padding: 2%;
         font-size: 4vh;
     }
     #mainMenuBtn {
