@@ -65,7 +65,7 @@
 <header th:replace="~{partials/header :: header}"></header>
 <body class="container">
     <video playsinline autoplay muted loop id="sweetDreamsBG">
-        <source src="/vid/sweetDreamsLostBG.mp4" type="video/mp4">
+        <source src="/vid/sweetdreamslostbg.mp4" type="video/mp4">
     </video>
     <audio controls autoplay style="display: none;" id="audioGame">
         <source src="/audio/SweetDreams.mp3" type="audio/mpeg">
@@ -95,11 +95,9 @@
     let currentBrightness = userBrightness.value;
     brightness.style.filter = `brightness(${currentBrightness})`;
     function onLoadFunction() {
-    var videos = document.querySelectorAll('video');
-    videos.forEach(function(video) {
+    var video = document.getElementsByTagName(video);
     video.play();
-    audio.play();
-    });
+    audioGame.play();
 }
 window.onload = onLoadFunction;
 </script>
