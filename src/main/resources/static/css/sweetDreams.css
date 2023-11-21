@@ -28,6 +28,9 @@ html {
         width: 50%;
         height: 61%;
     }
+    .homeMenu {
+        margin-left: 0;
+    }
     #rightSide {
         left: 50%;
         border-left: 1px solid;
@@ -47,6 +50,9 @@ html {
         position: absolute;
         width: 50%;
         height: 61%;
+    }
+    .homeMenu {
+        margin-left: 0;
     }
     #rightSide {
         left: 50%;
@@ -90,6 +96,9 @@ html {
         position: absolute;
         width: 50%;
         height: 61%;
+    }
+    .homeMenu {
+        margin-left: 0;
     }
     #rightSide {
         left: 50%;

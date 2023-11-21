@@ -114,8 +114,10 @@
             var leftHeight = leftSide.clientHeight
             var leftWidth = leftSide.clientWidth;
             let maxWidth =
-            window.innerWidth < 951 ? leftWidth - 90 :
-            leftWidth - 150;
+            window.innerWidth < 560 ? leftWidth - 65 :
+            window.innerWidth < 769 ? leftWidth - 90 :
+            window.innerWidth < 1301 ? leftWidth - 150 :
+            leftWidth - 350;
             let maxHeight =
             window.innerWidth < 951 ? leftHeight - 90 :
             leftHeight - 150;

@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Creepster&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        input {
+            font-style: normal;
+        }
         .back-settings-icon {
             display: none;
         }
@@ -60,8 +63,8 @@
         <a id="loginBtn" sec:authorize="!isAuthenticated()" href="/login">Login</a>
         <a id="registerBtn" sec:authorize="!isAuthenticated()" href="/register">Create Account</a>
         <a id="mainMenuBtn" sec:authorize="isAuthenticated()" href="/main">Main Menu</a>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout"/>
+        <form th:action="@{/logout}" method="post" style="font-style: normal;">
+            <input type="submit" style="font-style: normal;" value="Logout"/>
         </form>
     </div>
     <input type="text" id="homeMusic" name="homeMusic" th:field="*{gamesettings.homeMusic}" style="display: none;">
