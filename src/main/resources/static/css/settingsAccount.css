@@ -1,4 +1,13 @@
 @media (min-width: 1px) and (max-width: 368px) {
+    .btn-secondary {
+        width: 35%;
+    }
+    #form {
+        width: 50%;
+    }
+    .btn-danger {
+        width: 70%;
+    }
     input {
         width: 20.75%;
         padding: .15% .15%;
@@ -78,6 +87,15 @@
     }
 }
 @media (min-width: 369px) and (max-width: 560px) {
+    #modalCancel {
+        width: 35%;
+    }
+    #form {
+        width: 50%;
+    }
+    #modalDelete {
+        width: 70%;
+    }
     input {
         width: 20.75%;
         padding: .15% .15%;
@@ -157,6 +175,15 @@
     }
 }
 @media (min-width: 561px) and (max-width: 769px) {
+    #modalCancel {
+        width: 35%;
+    }
+    #form {
+        width: 50%;
+    }
+    #modalDelete {
+        width: 70%;
+    }
     input {
         width: 20.75%;
         padding: .15% .15%;
@@ -239,6 +266,15 @@
     }
 }
 @media (min-width: 769px) and (max-width: 950px) {
+    #modalCancel {
+        width: 35%;
+    }
+    #form {
+        width: 50%;
+    }
+    #modalDelete {
+        width: 70%;
+    }
     input {
         width: 20.75%;
         padding: .15% .15%;

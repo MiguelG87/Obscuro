@@ -99,9 +99,9 @@
                         Are you sure you want to delete your profile? This action cannot be undone.
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <form th:action="@{/settings/{id}/delete (id= ${user.id})}" th:method="post">
-                            <input type="submit" class="btn btn-danger" value="Delete Account">
+                        <button type="button" id="modalCancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form th:action="@{/settings/{id}/delete (id= ${user.id})}" id="form" th:method="post">
+                            <input type="submit" id="modalDelete" class="btn btn-danger" value="Delete Account">
                         </form>
                     </div>
                 </div>
